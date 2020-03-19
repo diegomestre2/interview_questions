@@ -2,6 +2,7 @@
 # Add and Link libraries
 # ----------------------
 add_subdirectory(hello)
+add_subdirectory(snowflake)
 
 # Add Cpp files
 add_library(cpp_project_example_library SHARED ${ALL_OBJECT_FILES})
