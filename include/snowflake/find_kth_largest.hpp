@@ -10,19 +10,22 @@ void swap(uint32_t &lhs, uint32_t &rhs) {
 	rhs = temp;
 }
 
-uint32_t find_k_largest_element(std::vector<uint32_t> &vec, size_t k) {
-	std::vector<uint32_t> vec_desc(vec.size(), 0);
-	for (size_t i = 0, j = 0; i != vec.size(); ++i) {
-		if (vec[i] > vec_desc[j]) {
-			vec_desc[j] = vec[i];
-			while (vec_desc[j + 1] > vec_desc[j] && j < k) {
-				swap(vec_desc[j + 1], vec_desc[j]);
-				j++;
-			}
-			j = 0;
-		}
+void max_heapify(std::vector<uint32_t> &vec, size_t index) {
+	uint32_t temp = vec[index];
+	size_t j = 2 * index;
+}
+
+void build_max_heap(std::vector<uint32_t> &vec) {
+	for (size_t i = vec.size() / 2; i >= 1; --i) {
+		max_heapify(vec, i);
 	}
-	return vec_desc[k - 1];
+}
+
+uint32_t find_k_largest_element(std::vector<uint32_t> &vec, size_t k) {
+	build_max_heap(vec);
+	for (size_t i = 0; i != k; ++i) {
+		max_heapify(vec, i);
+	}
 }
 
 void run_kth_largest() {
