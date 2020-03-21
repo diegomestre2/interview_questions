@@ -3,6 +3,7 @@
 # ----------------------
 add_subdirectory(hello)
 add_subdirectory(snowflake)
+add_subdirectory(data_structure)
 
 # Add Cpp files
 add_library(cpp_project_example_library SHARED ${ALL_OBJECT_FILES})

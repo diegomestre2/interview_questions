@@ -12,7 +12,8 @@ void swap(uint32_t &lhs, uint32_t &rhs) {
 
 void max_heapify(std::vector<uint32_t> &vec, size_t index) {
 	uint32_t temp = vec[index];
-	size_t j = 2 * index;
+	size_t j = 2 * index + temp;
+	j++;
 }
 
 void build_max_heap(std::vector<uint32_t> &vec) {

@@ -1,38 +1,46 @@
 #include <data_structure/binary_tree.hpp>
 
 BinarySearchTree::BinarySearchTree() {
-	root_node = unique_ptr<Node>(new Node());
+	root_node = std::unique_ptr<Node>(new Node());
 }
 
 void BinarySearchTree::insert_node(Node *node_to_insert) {
-	auto tmp_node = root_node;
-	while (tmp_node != nullptr) {
-		if (node_to_insert->value > tmp_node->value)
-			tmp_node = tmp_node->right;
+	auto walk_node = root_node.get();
+	while (walk_node != nullptr) {
+		if (node_to_insert->value > walk_node->value)
+			walk_node = walk_node->right_node;
 		else
-			tmp_node = tmp_node->left;
+			walk_node = walk_node->left_node;
 	}
-	tmp_node = node_to_insert;
+	walk_node = node_to_insert;
 }
 
 void BinarySearchTree::remove_node(Node *node_to_remove) {
 	Node *prev_node = nullptr;
-	auto walk_node = root_node;
+	auto walk_node = root_node.get();
 	while (walk_node != node_to_remove) {
-		if (node_to_remove->value > tmp_node->value)
-			walk_node = walk_node->right;
+		prev_node = walk_node;
+		if (node_to_remove->value > walk_node->value)
+			walk_node = walk_node->right_node;
 		else
-			walk_node = walk_node->left;
+			walk_node = walk_node->left_node;
 	}
-	tmp_node = nullptr;
+	// check if the root should be removed
+	if (!prev_node) {
+		prev_node = root_node.get();
+	}
 }
 
-void BinarySearchTree::insert_value(Value value) {
-	auto new_node = unique_ptr<Node>(value);
-	insert_node(move(new_node));
+void BinarySearchTree::insert_value(Value value_to_insert) {
+	auto new_node = std::unique_ptr<Node>(new Node(value_to_insert));
+	insert_node(new_node.get());
 }
-
+void BinarySearchTree::remove_value(Value value_to_remove) {
+}
 void BinarySearchTree::print() {
-	tmp_node = root_node;
-	while (tmp_node->value != 0)
+	auto walk_node = root_node.get();
+	while (walk_node->value != 0) {
+		std::cout << walk_node->value << ' ';
+	}
+	std::cout << std::endl;
 }
