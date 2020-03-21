@@ -8,6 +8,7 @@ public:
 	BinarySearchTree();
 	BinarySearchTree(BinarySearchTree &rhs){};
 	BinarySearchTree(BinarySearchTree &&rhs) = delete;
+	~BinarySearchTree();
 	struct Node;
 	using Value = uint32_t;
 	// methods
@@ -18,17 +19,15 @@ public:
 	void print();
 
 private:
-	std::unique_ptr<Node> root_node;
+	void print_node(Node *root);
+	Node *root_node;
 };
 
 struct BinarySearchTree::Node {
-	Node() {
-		value = 0;
-		left_node = right_node = nullptr;
-	}
-	Node(Value value) : value(value) {
-
-		left_node = right_node = nullptr;
+	Node(Value new_value) {
+		value = new_value;
+		left_node = nullptr;
+		right_node = nullptr;
 	}
 	Value value;
 	Node *left_node;
