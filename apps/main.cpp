@@ -1,4 +1,5 @@
 #include <data_structure/binary_tree.hpp>
+#include <memory>
 #include <snowflake/snowflake.hpp>
 
 int main(int argc, char **argv) {
