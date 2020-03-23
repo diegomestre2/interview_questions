@@ -72,3 +72,13 @@ BinarySearchTree::~BinarySearchTree() {
 		delete root_node;
 	}
 }
+
+Node *BinarySearchTree::find_successor_node(Node *root_node) {
+	// go to the right node
+	auto walk_node = root_node->right_node;
+	// now find the left most valid node
+	while (walk_node->left_node) {
+		walk_node = walk_node->left_node;
+	}
+	return walk_node;
+}

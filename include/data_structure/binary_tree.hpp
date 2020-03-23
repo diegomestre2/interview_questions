@@ -18,6 +18,7 @@ public:
 	void print();
 
 private:
+	Node *find_successor_node(Node *root_node);
 	void print_node(Node *root);
 	Node *root_node;
 };

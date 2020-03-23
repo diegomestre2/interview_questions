@@ -1,41 +1,63 @@
-#pragma once
-
+#include <algorithm>
+#include <cassert>
 #include <iostream>
+#include <queue>
 #include <vector>
 
-void swap(uint32_t &lhs, uint32_t &rhs) {
-	uint32_t temp;
-	temp = lhs;
-	lhs = rhs;
-	rhs = temp;
-}
+using namespace std;
 
-void max_heapify(std::vector<uint32_t> &vec, size_t index) {
-	uint32_t temp = vec[index];
-	size_t j = 2 * index + temp;
-	j++;
-}
-
-void build_max_heap(std::vector<uint32_t> &vec) {
-	for (size_t i = vec.size() / 2; i >= 1; --i) {
-		max_heapify(vec, i);
+template <typename T> std::vector<T> find_kth_largest(std::vector<T> &values, size_t k) {
+	assert(values.size() > k);
+	assert(k > 0);
+	// O(nlogn) quicksort
+	std::sort(values.begin(), values.end());
+	// O(k)
+	std::vector<T> largest_values;
+	auto iterator = values.rbegin();
+	while (k != 0) {
+		largest_values.push_back(*iterator++);
+		--k;
 	}
+	return largest_values;
 }
 
-uint32_t find_k_largest_element(std::vector<uint32_t> &vec, size_t k) {
-	build_max_heap(vec);
-	for (size_t i = 0; i != k; ++i) {
-		max_heapify(vec, i);
+template <typename T> std::vector<T> find_kth_largest_opt(std::vector<T> &values, size_t k) {
+	assert(values.size() > k);
+	assert(k > 0);
+
+	// O(logn) quicksort
+	std::priority_queue max_heap(values.begin(), values.end());
+	// O(k)
+	std::vector<T> largest_values;
+	while (k != 0) {
+		largest_values.push_back(max_heap.pop());
+		--k;
 	}
+	return largest_values;
 }
 
-void run_kth_largest() {
-	std::cout << "Find kth largest" << std::endl;
-	std::vector<uint32_t> vec;
-	vec = {1, 2, 3, 4, 5};
-	uint32_t result = find_k_largest_element(vec, 3);
-	for (size_t i = 0; i != vec.size(); ++i) {
-		std::cout << vec[i] << " ";
+// To execute C++, please define "int main()"
+int main() {
+	auto values = std::vector<uint32_t>{1, 2, 3, 4, 5};
+	auto k = size_t{2};
+	auto largest_values = find_kth_largest(values, k);
+	for (auto value : largest_values) {
+		std::cout << value << " ";
 	}
-	std::cout << " K: " << result << std::flush;
+	return 0;
+}
+
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
+unsigned int Factorial(unsigned int number) {
+	return number <= 1 ? 1 : Factorial(number - 1) * number;
+}
+
+TEST_CASE("Factorials are computed", "[factorial]") {
+	REQUIRE(Factorial(0) == 1);
+	REQUIRE(Factorial(1) == 1);
+	REQUIRE(Factorial(2) == 2);
+	REQUIRE(Factorial(3) == 6);
+	REQUIRE(Factorial(10) == 3628800);
 }
