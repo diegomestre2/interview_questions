@@ -3,6 +3,7 @@
 # ----------------------
 add_subdirectory(hello)
 add_subdirectory(snowflake)
+add_subdirectory(leetcode)
 add_subdirectory(data_structure)
 
 # Add Cpp files
