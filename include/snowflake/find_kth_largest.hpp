@@ -44,5 +44,4 @@ void run_kth_largest() {
 	for (auto value : largest_values) {
 		std::cout << value << " ";
 	}
-	return 0;
 }
