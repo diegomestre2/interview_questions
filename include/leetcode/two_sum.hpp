@@ -1,6 +1,6 @@
 #pragma once
-
-vector<int> twoSum(vector<int> &nums, int target) {
+#include <vector>
+std::vector<int> twoSum(std::vector<int> &nums, int target) {
 	int i{0}, j{0};
 	for (; i != nums.size(); ++i)
 		for (j = i + 1; j != nums.size(); ++j)
@@ -9,7 +9,7 @@ vector<int> twoSum(vector<int> &nums, int target) {
 	return std::vector<int>({i, j});
 }
 
-vector<int> twoSumOpt(vector<int> &nums, int target) {
+std::vector<int> twoSumOpt(std::vector<int> &nums, int target) {
 	std::map<int, int> map;
 	for (int i = 0; i != nums.size(); ++i) {
 		auto complement = target - nums[i];
