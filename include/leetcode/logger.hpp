@@ -26,11 +26,11 @@ public:
 	}
 
 private:
-	std::map<string, int> messages;
+	std::map<std::string, int> messages;
 };
 
 void run_logger() {
-	Logger logger = new Logger();
+	Logger logger;
 
 	// logging string "foo" at timestamp 1
 	assert(logger.shouldPrintMessage(1, "foo") == true);
