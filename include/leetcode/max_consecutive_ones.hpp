@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-int find_max_consecutive_ones(vector<int> &nums) {
+int find_max_consecutive_ones(std::vector<int> &nums) {
 	size_t count{0};
 	size_t result{0};
 	for (auto num : nums) {
