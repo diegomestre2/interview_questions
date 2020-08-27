@@ -34,3 +34,15 @@ ListNode *swap_pairs(ListNode *head) {
 
 	return second_node;
 }
+
+ListNode *reverseList(ListNode *head) {
+	ListNode *previous_node = nullptr;
+	auto current_node = head;
+	while (current_node) {
+		auto next_node = current_node->next;
+		current_node->next = previous_node;
+		previous_node = current_node;
+		current_node = next_node;
+	}
+	return previous_node;
+}
