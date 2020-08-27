@@ -1,4 +1,6 @@
 #pragma once
+#include "data_structure/list.hpp"
+
 #include <cstdio>
 #include <vector>
 void print_reverse(const char *string) {
@@ -16,4 +18,19 @@ void reverse_string(std::vector<char> &s) {
 	while (i < j) {
 		std::swap(s[i++], s[j--]);
 	}
+}
+
+ListNode *swap_pairs(ListNode *head) {
+	// base case
+	if (!head || !head->next) {
+		return head;
+	}
+	// pair
+	auto first_node = head;
+	auto second_node = head->next;
+	// swap
+	first_node->next = swap_pairs(second_node->next);
+	second_node->next = first_node;
+
+	return second_node;
 }
