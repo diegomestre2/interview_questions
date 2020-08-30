@@ -66,7 +66,7 @@ int key(int i, int j) const {
 	return (hashed << 5) - 1 + (int)(hash_j ^ (hash_j >> 32));
 }
 
-int getNum(int row, int col) {
+int get_num(int row, int col) {
 	auto rowCol = key(row, col);
 
 	if (cache.count(rowCol) > 0)
@@ -78,11 +78,11 @@ int getNum(int row, int col) {
 	return (cache[rowCol] = getNum(row - 1, col - 1) + getNum(row - 1, col));
 }
 
-vector<int> getRow(int rowIndex) {
+vector<int> get_row(int rowIndex) {
 	vector<int> ans;
 
 	for (int i = 0; i <= rowIndex; i++)
-		ans.push_back(getNum(rowIndex, i));
+		ans.push_back(get_num(rowIndex, i));
 
 	return ans;
 }
@@ -97,15 +97,15 @@ int fib(int N) {
 
 int climbStairs(int n) {
 	auto memo = std::make_unique<int[]>(n + 1);
-	return climb_Stairs(0, n, memo.get());
+	return climb_stairs(0, n, memo.get());
 }
-int climb_Stairs(int i, int n, int *memo) {
+int climb_stairs(int i, int n, int *memo) {
 	if (i > n)
 		return 0;
 	if (i == n)
 		return 1;
 	if (memo[i] > 0)
 		return memo[i];
-	memo[i] = climb_Stairs(i + 1, n, memo) + climb_Stairs(i + 2, n, memo);
+	memo[i] = climb_stairs(i + 1, n, memo) + climb_stairs(i + 2, n, memo);
 	return memo[i];
 }
