@@ -46,6 +46,14 @@ ListNode *reverseList(ListNode *head) {
 	}
 	return previous_node;
 }
+ListNode *reverseList_recursive(ListNode *head) {
+	if (!head || !head->next)
+		return head;
+	ListNode *previous_node = reverseList(head->next);
+	head->next->next = head;
+	head->next = nullptr;
+	return previous_node;
+}
 
 TreeNode *searchBST(TreeNode *root, int val) {
 	if (!root)
