@@ -117,3 +117,15 @@ int climb_stairs(int i, int n, int *memo) {
 	memo[i] = climb_stairs(i + 1, n, memo) + climb_stairs(i + 2, n, memo);
 	return memo[i];
 }
+std::vector<int> getRow(int rowIndex) {
+	std::vector<int> current_row({1});
+	if (rowIndex == 0)
+		return result;
+	auto previous_row = getRow(rowIndex - 1);
+	for (size_t i = 1; i != prev.size(); ++i) {
+		auto val = previous_row[i] + previous_row[i - 1];
+		current_row.push_back(val);
+	}
+	current_row.push_back(1);
+	return current_row;
+}
