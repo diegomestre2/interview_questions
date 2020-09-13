@@ -35,7 +35,7 @@ ListNode *swap_pairs(ListNode *head) {
 	return second_node;
 }
 
-ListNode *reverseList(ListNode *head) {
+ListNode *reverse_list(ListNode *head) {
 	ListNode *previous_node = nullptr;
 	auto current_node = head;
 	while (current_node) {
@@ -46,7 +46,7 @@ ListNode *reverseList(ListNode *head) {
 	}
 	return previous_node;
 }
-ListNode *reverseList_recursive(ListNode *head) {
+ListNode *reverse_list_recursive(ListNode *head) {
 	if (!head || !head->next)
 		return head;
 	ListNode *previous_node = reverseList(head->next);
@@ -55,7 +55,7 @@ ListNode *reverseList_recursive(ListNode *head) {
 	return previous_node;
 }
 
-TreeNode *searchBST(TreeNode *root, int val) {
+TreeNode *search_BST(TreeNode *root, int val) {
 	if (!root)
 		return nullptr;
 	if (root->val == val)
@@ -117,11 +117,11 @@ int climb_stairs(int i, int n, int *memo) {
 	memo[i] = climb_stairs(i + 1, n, memo) + climb_stairs(i + 2, n, memo);
 	return memo[i];
 }
-std::vector<int> getRow(int rowIndex) {
+std::vector<int> pascal_triangle_get_row(int row_idx) {
 	std::vector<int> current_row({1});
-	if (rowIndex == 0)
+	if (row_idx == 0)
 		return result;
-	auto previous_row = getRow(rowIndex - 1);
+	auto previous_row = pascal_triangle_get_row(row_idx - 1);
 	for (size_t i = 1; i != prev.size(); ++i) {
 		auto val = previous_row[i] + previous_row[i - 1];
 		current_row.push_back(val);
