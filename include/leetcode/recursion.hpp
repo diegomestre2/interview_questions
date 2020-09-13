@@ -129,3 +129,19 @@ std::vector<int> pascal_triangle_get_row(int row_idx) {
 	current_row.push_back(1);
 	return current_row;
 }
+
+std::map<int, int> memo;
+int fib_memoization(int n) {
+	int res{0};
+	if (n == 0)
+		return res;
+	auto iter = memo.find(n);
+	if (iter != memo.end())
+		return iter->second;
+	if (n == 2 || n == 1)
+		res = 1;
+	else
+		res = fib(n - 1) + fib(n - 2);
+	memo.insert(std::pair<int, int>(n, res));
+	return res;
+}
