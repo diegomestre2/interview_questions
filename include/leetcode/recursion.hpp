@@ -145,3 +145,13 @@ int fib_memoization(int n) {
 	memo.insert(std::pair<int, int>(n, res));
 	return res;
 }
+
+int maxDepth(TreeNode *root) {
+	if (!root)
+		return 0;
+	if (!root->left && !root->right)
+		return 1;
+	auto left_max = maxDepth(root->left);
+	auto right_max = maxDepth(root->right);
+	return (left_max > right_max) ? (left_max + 1) : (right_max + 1);
+}
