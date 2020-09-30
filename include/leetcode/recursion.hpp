@@ -155,3 +155,21 @@ int maxDepth(TreeNode *root) {
 	auto right_max = maxDepth(root->right);
 	return (left_max > right_max) ? (left_max + 1) : (right_max + 1);
 }
+
+double myPow(double x, int n) {
+	long double result;
+	if (n > (-1 * pow(2, 31)) or n < pow(2, 31)) {
+		if (x >= 0) {
+			result = pow(x, n);
+		} else {
+			if (n % 2 == 0) {
+				result = pow((-(x)), n);
+			} else {
+				result = (-1) * pow((-(x)), n);
+			}
+		}
+		return result;
+	} else {
+		return 0;
+	}
+}
