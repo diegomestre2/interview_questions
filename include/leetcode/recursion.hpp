@@ -173,3 +173,21 @@ double myPow(double x, int n) {
 		return 0;
 	}
 }
+
+ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+	if (!l1)
+		return l2;
+	else if (!l2)
+		return l1;
+	ListNode dummy;
+	ListNode *tail = &dummy;
+	dummy.next = nullptr;
+	if (l1->val <= l2->val) {
+		tail->next = l1;
+		tail->next->next = mergeTwoLists(l1->next, l2);
+	} else {
+		tail->next = l2;
+		tail->next->next = mergeTwoLists(l1, l2->next);
+	}
+	return dummy.next;
+}
