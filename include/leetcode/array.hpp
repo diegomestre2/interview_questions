@@ -16,3 +16,16 @@ int findMaxConsecutiveOnes(std::vector<int> &nums) {
 	}
 	return std::max(max, count);
 }
+
+int findNumbers(std::vector<int> &nums) {
+	size_t even{0}, count{1};
+	for (auto num : nums) {
+		while (num >= 10) {
+			num = num / 10;
+			count++;
+		}
+		even += (count % 2 == 0) ? 1 : 0;
+		count = 1;
+	}
+	return even;
+}
