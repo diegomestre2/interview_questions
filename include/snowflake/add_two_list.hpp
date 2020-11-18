@@ -1,5 +1,6 @@
 #pragma once
-
+#include <algorithm>
+#include <vector>
 struct ListNode {
 	int val;
 	ListNode *next;
@@ -30,3 +31,21 @@ public:
 		return head_output->next;
 	}
 };
+
+ListNode *mergeKLists(std::vector<ListNode *> &lists) {
+	std::vector<int> array;
+	for (auto list : lists) {
+		while (list) {
+			array.push_back(list->val);
+			list = list->next;
+		}
+	}
+	std::sort(array.begin(), array.end());
+	auto head = new ListNode();
+	auto point_head = head;
+	for (auto val : array) {
+		point_head->next = new ListNode(val);
+		point_head = point_head->next;
+	}
+	return head->next;
+}
