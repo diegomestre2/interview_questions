@@ -9,6 +9,24 @@ struct ListNode {
 	}
 };
 
+ListNode *mergeKLists(std::vector<ListNode *> &lists) {
+	std::vector<int> array;
+	for (auto list : lists) { // O(n)
+		while (list) {
+			array.push_back(list->val);
+			list = list->next;
+		}
+	}
+	std::sort(array.begin(), array.end()); // O(nLogn)
+	auto head = new ListNode();
+	auto point_head = head;
+	for (auto val : array) { // O(n)
+		point_head->next = new ListNode(val);
+		point_head = point_head->next;
+	}
+	return head->next;
+}
+
 ListNode *mergeKListsOpt(vector<ListNode *> &lists) {
 	auto new_list = new ListNode();
 	auto pointer = new_list;
