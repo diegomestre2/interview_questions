@@ -1,4 +1,6 @@
 #pragma once
+#include <map>
+#include <utility>
 #include <vector>
 std::vector<int> twoSum(std::vector<int> &nums, int target) {
 	int i{0}, j{0};
