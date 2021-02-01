@@ -12,7 +12,7 @@ std::vector<int> twoSum(std::vector<int> &nums, int target) {
 }
 
 std::vector<int> twoSumOpt(std::vector<int> &nums, int target) {
-	std::map<int, int> map;
+	std::unorderd_map<int, int> map;
 	for (int i = 0; i != nums.size(); ++i) {
 		auto complement = target - nums[i];
 		auto iter = map.find(complement);
