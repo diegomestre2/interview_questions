@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<int> findDuplicates(vector<int> &nums) {
+vector<int> find_all_duplicates(vector<int> &nums) {
 	std::vector<int> result;
 	result.reserve(nums.size());
 	for (size_t i = 0; i != nums.size(); ++i) {
