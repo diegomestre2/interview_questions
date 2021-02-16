@@ -15,3 +15,20 @@ bool contains_duplicate(vector<int> &nums) {
 	}
 	return false;
 }
+
+int findDuplicate(vector<int> &nums) {
+	auto i = nums[0];
+	auto j = nums[0];
+
+	do {
+		i = nums[i];
+		j = nums[nums[j]];
+	} while (i != j);
+
+	i = nums[0];
+	while (i != j) {
+		i = nums[i];
+		j = nums[j];
+	}
+	return j;
+}
