@@ -8,6 +8,7 @@ ListNode<int> *rearrangeLastN(ListNode<int> *l, int n) {
 	auto middle = 1;
 	auto tail = l;
 	auto prev_slow = l;
+	// slow and fast pointer
 	while (fast && fast->next) {
 		middle++;
 		tail = fast->next;
@@ -15,24 +16,26 @@ ListNode<int> *rearrangeLastN(ListNode<int> *l, int n) {
 		prev_slow = slow;
 		slow = slow->next;
 	}
-	if (middle == n) {
-		tail->next->next = l;
-		prev_slow->next = nullptr;
-		return slow;
-	} else if (middle > n) {
-		while (middle != n) {
-			middle--;
+	// we have to either walk forward
+	if (middle >= n) {
+		auto to_walk = middle - n;
+		// point tail to beginning
+		if (tail->next) {
+			// even
+			tail->next->next = l;
+		} else {
+			// odd
+			to_walk--;
+			tail->next = l;
+		}
+		while (to_walk-- != 0 && slow) {
 			prev_slow = slow;
 			slow = slow->next;
 		}
-		if (tail->next) {
-			tail->next->next = l;
-		} else {
-			tail->next = l;
-		}
+
 		prev_slow->next = nullptr;
 		return slow;
-	} else {
+	} else { // or backwards
 		if (n == (middle - 1) * 2)
 			return l;
 		auto to_walk = middle - (n - middle) - 2;
