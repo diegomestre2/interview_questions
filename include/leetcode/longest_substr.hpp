@@ -1,5 +1,6 @@
 
 #pragma once
+#include <cassert>
 #include <set>
 #include <string>
 

@@ -1,8 +1,8 @@
 #pragma once
 
+#include <cassert>
 #include <vector>
 int remove_duplicates(std::vector<int> &nums) {
-	size_t count = nums.size();
 	if (nums.size() == 0)
 		return 0;
 	size_t i = 0;

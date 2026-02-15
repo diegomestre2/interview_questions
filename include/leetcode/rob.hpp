@@ -1,4 +1,6 @@
 
+#include "climbing_stairs.h"
+
 #include <algorithm>
 #include <cassert>
 #include <vector>

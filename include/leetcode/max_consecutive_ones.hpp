@@ -1,4 +1,5 @@
 #pragma once
+#include <cassert>
 #include <vector>
 int find_max_consecutive_ones(std::vector<int> &nums) {
 	size_t count{0};
@@ -16,8 +17,8 @@ int find_max_consecutive_ones(std::vector<int> &nums) {
 }
 
 void run_max_consecutive_ones() {
-
-	assert(find_max_consecutive_ones(std::vector<int>({1, 0, 1, 1, 0, 1})) == 3);
+std::vector<int> input = {1, 0, 1, 1, 0, 1};
+	assert(find_max_consecutive_ones(input) == 3);
 }
 
 int findNumbers(std::vector<int> &nums) {

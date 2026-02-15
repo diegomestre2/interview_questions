@@ -7,4 +7,5 @@ void LeetCode::run_leetcode() {
 	run_remove_duplicates();
 	run_min_remove_to_make_valid();
 	run_rob();
+	run_climbStairs();
 }
