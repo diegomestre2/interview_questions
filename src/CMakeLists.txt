@@ -8,7 +8,12 @@ add_subdirectory(data_structure)
 
 # Add Cpp files
 add_library(cpp_project_example_library SHARED ${ALL_OBJECT_FILES}
-        ../include/leetcode/climbing_stairs.h)
+        ../include/leetcode/climbing_stairs.h
+        ../include/db_engine/db_runner.hpp
+        ../include/db_engine/db_runner.hpp
+        ../include/db_engine/db_runner.cpp
+        ../include/db_engine/db_runner.hpp
+        ../include/db_engine/db_runner.hpp)
 
 # Add Hpp files
 target_include_directories(

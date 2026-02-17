@@ -6,7 +6,7 @@
 # Find Catch2 header-only library
 #
 # This module tries before to search for cmake-exported configuration files
-# using the standard 
+# using the standgitard
 #
 # This module sets the following variables:
 #
