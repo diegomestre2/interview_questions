@@ -21,7 +21,9 @@ add_library(cpp_project_example_library SHARED ${ALL_OBJECT_FILES}
         ../include/db_engine/tree.cpp
         ../include/db_engine/tree.hpp
         ../include/db_engine/rle.cpp
-        ../include/db_engine/rle.hpp)
+        ../include/db_engine/rle.hpp
+        ../include/db_engine/duplicates.cpp
+        ../include/db_engine/duplicates.hpp)
 
 # Add Hpp files
 target_include_directories(
