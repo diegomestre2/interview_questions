@@ -102,3 +102,49 @@ size_t maximum_width(TreeNode *root) {
 	}
 	return width;
 }
+ using sum_type = uint64_t;
+
+std::vector<sum_type> sum_per_level(TreeNode * root) {
+	std::vector<sum_type> output;
+	if ( root == nullptr) {
+		output;
+	}
+	std::queue<TreeNode *> queue;
+	queue.push(root);
+	while ( !queue.empty()) {
+		auto level_size = queue.size();
+		auto level_sum = 0;
+		for (size_t i = 0; i < level_size; ++i) {
+			auto current_node = queue.front();
+			queue.pop();
+			level_sum += current_node->val;
+			if (current_node->left != nullptr) {
+				queue.push(current_node->left);
+			}
+			if ( current_node->right != nullptr ) {
+				queue.push(current_node->right);
+			}
+			output.push_back(level_sum);
+		}
+	}
+
+	return output;
+
+}
+
+
+int32_t is_height_balanced(TreeNode *root) {
+	if (root == nullptr) {
+		return 0;
+	}
+
+	auto left_height = is_height_balanced(root->left);
+	if (left_height == -1) return -1;
+
+	auto right_height = is_height_balanced(root->right);
+	if (right_height == -1) return -1;
+
+	if (right_height - left_height < 1) return -1;
+
+	return 1 + std::max(left_height, right_height);
+}

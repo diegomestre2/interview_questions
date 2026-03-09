@@ -39,3 +39,31 @@ void rotate_array(std::vector<uint32_t> &input, size_t k) {
 		--k;
 	}
 }
+
+// 1 2 6 --- 3 5 7
+
+
+void merge_sorted(std::vector<uint32_t> &input1, std::vector<uint32_t> & input2) {
+	input1.resize(input1.size() + input2.size());
+	size_t read1 = 0;
+	size_t read2 = 0;
+	size_t write = 0;
+
+	while(read1 < input1.size()) {
+		if (input1[read1] > input2[read2]) {
+			std::swap(input1[read1], input2[read2]);
+		}
+		read1++;
+		read2++;
+
+	}
+}
+
+uint64_t prefix_sum(std::vector<uint32_t> & input) {
+	uint64_t sum =0;
+
+}
+
+void reverse(std::string & words) {
+
+}

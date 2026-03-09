@@ -56,3 +56,32 @@ private:
 	size_t head{0};
 	size_t tail{0};
 };
+
+class RingBuffer2 {
+	RingBuffer2(size_t capacity) : buffer_capacity(capacity), buffer_data(capacity), head(0), tail(0) {}
+	bool push(const uint32_t &value) {
+		size_t next_tail = (tail + 1) % buffer_capacity;
+		if (tail == head) {
+			// buffer empty
+			buffer_data[head] = value;
+			tail = next_tail;
+		}
+		// buffer full?
+		if (next_tail == head) {
+			// buffer is full
+			return false;
+		}
+		// not full and not empty
+		buffer_data[tail] = value;
+		tail = next_tail;
+		return true;
+	}
+	pop();
+	empty();
+	full();
+private:
+	size_t buffer_capacity{0};
+	std::vector<uint32_t> buffer_data;
+	size_t head{0};
+	size_t tail{0};
+};
